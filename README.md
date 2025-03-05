@@ -17,7 +17,7 @@ This documentation provides an overview of the signup and login system built usi
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/pittu777/signup-login-using-mern.git
    cd backend
    ```
 2. Install dependencies:
