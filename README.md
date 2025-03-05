@@ -131,7 +131,7 @@ project-root/
 1. User signs up → Account gets created in MySQL.
 2. User logs in → Backend verifies credentials → Returns JWT token.
 3. Token gets stored in **localStorage** or **Redux store**.
-4. Protected routes verify the token before allowing access.
+
 
 ## 8. Troubleshooting
 
@@ -149,7 +149,6 @@ This project is a secure authentication system using React, Redux, Node.js, Expr
 ### Features:
 - User registration & login
 - Secure authentication using JWT & bcrypt
-- Role-based protected routes
 - Database management using Prisma & MySQL
 - Fully responsive UI with React & Redux
 
@@ -160,11 +159,5 @@ This project is a secure authentication system using React, Redux, Node.js, Expr
 4. Run `npx prisma migrate dev`
 5. Start the app with `npm run dev`
 
-## 10. Conclusion
 
-This signup and login system ensures secure authentication with JWT and Prisma ORM. Future improvements can include password reset, OAuth login, and account verification.
-
----
-
-This documentation provides a clear structure for developers to understand and set up the project efficiently.
 
