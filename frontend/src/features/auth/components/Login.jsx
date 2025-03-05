@@ -23,7 +23,7 @@ const Login = () => {
         draggable: true,
       });
     }
-  }, [error]); // Runs only when `error` changes
+  }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
