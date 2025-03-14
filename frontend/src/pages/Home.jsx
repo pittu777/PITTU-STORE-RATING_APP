@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Navbar from '../layouts/navbar';
 import { useSelector } from 'react-redux';
+import Navbar from '../layouts/Navbar';
 
 
 
@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Navbar/>
     <div className='tw:text-center'>
-    <h2>Welcome to Home</h2>
+    <h2>Welcome to Home <span className='tw:animate-pulse'>👋</span></h2>
     {user ? (
       <div>
         <p>Logged in as: {user.email}</p>

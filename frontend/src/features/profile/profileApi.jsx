@@ -1,8 +1,8 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axiosInstance from "../../utils/axiosInstance";
 
-import { BASE_URL } from "../auth/authApi";
-import axios from "axios";
+
 
 export const getUserDetails = createAsyncThunk(
     "auth/getUserDetails", 
@@ -12,7 +12,7 @@ export const getUserDetails = createAsyncThunk(
         if(!token){
             return rejectWithValue("token not found")
         }
-        const response = await axios.get(`${BASE_URL}/user/profile`, {
+        const response = await axiosInstance.get(`/user/profile`, {
             headers: { Authorization: `Bearer ${token}` }, 
         });
 
