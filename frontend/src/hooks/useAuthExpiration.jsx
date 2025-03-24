@@ -17,16 +17,16 @@ const useAuthExpiration = () => {
 
         if (remainingTime <= 0) {
             dispatch(logout());
-            toast.warning("Session expired. Please log in again."); // Show Toast
+            toast.warning("Session expired. Please log in again."); 
             navigate("/login");
         } else {
             const timeout = setTimeout(() => {
                 dispatch(logout());
-                toast.warning("Session expired. Please log in again."); // Show Toast
+                toast.warning("Session expired. Please log in again."); 
                 navigate("/login");
             }, remainingTime);
 
-            return () => clearTimeout(timeout); // Cleanup timeout
+            return () => clearTimeout(timeout); 
         }
     }, [dispatch, navigate]);
 

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useSelector } from 'react-redux';
 import Navbar from '../layouts/Navbar';
+import Products from '../features/products/components/Products';
 
 
 
@@ -22,7 +23,7 @@ const Home = () => {
     )}
 
   </div>
-  
+<Products/>
     </>
   )
 }

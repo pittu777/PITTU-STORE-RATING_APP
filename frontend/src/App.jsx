@@ -13,7 +13,7 @@ function App() {
     <>
     <ToastContainer/>
       <Router>
-      <AuthExpirationHandler/>;
+      <AuthExpirationHandler/>
         <AppRoutes/>
       </Router>
     </>

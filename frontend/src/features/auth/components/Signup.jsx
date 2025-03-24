@@ -44,8 +44,8 @@ const Signup = () => {
             my-2" />
           <button type="submit" 
           className="tw:w-full
-           tw:bg-blue-500
-            tw:text-white tw:p-2 tw:rounded-md tw:hover:bg-blue-600 tw:transition
+           tw:bg-green-500
+            tw:text-white tw:p-2 tw:rounded-md tw:hover:bg-green-600 tw:transition
             tw:my-10" disabled={status === "loading"}>
             {status === "loading" ? "Signing up..." : "Signup"}
           </button>

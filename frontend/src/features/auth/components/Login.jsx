@@ -13,18 +13,18 @@ const Login = () => {
   const { status, error } = useSelector((state) => state.auth);
   
 
-  useEffect(() => {
-    if (error) {
-      toast.error("Login failed: " + error, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error("Login failed: " + error, {
+  //       position: "top-center",
+  //       autoClose: 3000,
+  //       hideProgressBar: true,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //     });
+  //   }
+  // }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +48,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="my-2 tw:w-full tw:py-2 tw:text-white tw:bg-blue-600 tw:hover:bg-blue-700 tw:rounded-lg tw:flex tw:items-center tw:justify-center"
+            className="my-2 tw:w-full tw:py-2 tw:text-white tw:bg-green-500 tw:hover:bg-green-700 tw:rounded-lg tw:flex tw:items-center tw:justify-center"
           >
             {status === "loading" ? (
               <svg

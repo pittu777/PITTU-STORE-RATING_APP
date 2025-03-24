@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage";
 import Home from "../pages/Home";
 import ProfilePage from "../pages/ProfilePage";
 import { useSelector } from "react-redux";
+import Cart from "../features/cart/components/Cart";
 
 
 const AppRoutes = () => {
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/home" element={!user?<LoginPage/>:<Home />} />
       <Route path="/profile" element={!user?<LoginPage/>:<ProfilePage />} />
+      <Route path="/cart" element={!user?<LoginPage/>:<Cart />} />
     </Routes>
   );
 };
