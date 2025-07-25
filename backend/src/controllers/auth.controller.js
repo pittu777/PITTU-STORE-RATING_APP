@@ -3,6 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const transporter = require("../config/mailer");
 
+
+
+
+
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -18,7 +22,7 @@ exports.signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword },
+      data: { name, email, password: hashedPassword, role:"USER" },
     });
 
     console.log(user);
@@ -47,7 +51,7 @@ exports.login = async (req, res) => {
     });
 
     res.json({
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, role:user.role },
       token,
       expiresAt: new Date().getTime() + expiresIn,
     });
@@ -120,3 +124,49 @@ exports.resetPassword = async (req, res) => {
     res.status(400).json({ error: "Invalid or expired token" });
   }
 };
+
+
+
+
+exports.adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Check if user is admin
+    if (user.role !== "ADMIN") {
+      return res.status(403).json({ error: "Access denied. Not an admin." });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
+      expiresIn: "2h",
+    });
+
+    res.json({
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+      token,
+      expiresAt: Date.now() + 2 * 60 * 60 * 1000, // 2h expiry
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+

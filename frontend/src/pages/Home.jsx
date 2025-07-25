@@ -2,12 +2,14 @@ import React from 'react'
 
 import { useSelector } from 'react-redux';
 import Navbar from '../layouts/Navbar';
-import Products from '../features/products/components/Products';
+import StoreList from '../features/productStore/components/StoreList';
+
 
 
 
 const Home = () => {
     const user = useSelector((state)=>state.auth.user);
+    console.log(user);
   return (
     <>
       <Navbar/>
@@ -23,7 +25,8 @@ const Home = () => {
     )}
 
   </div>
-<Products/>
+  {user && user.role==="USER" && <StoreList/>}
+
     </>
   )
 }

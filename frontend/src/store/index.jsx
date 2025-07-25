@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./../features/auth/authSlice";
 import profilReducer from "./../features/profile/profileSlice";
-import productsReducer from "./../features/products/productsSlice";
-import cartReducer from "./../features/cart/cartSlice";
-
-
+import productStoreReducer from "./../features/productStore/productStoreSlice";
+import adminReducer from "./../features/admin/adminSlice";
+import adminAuthReducer from "./../features/adminAuth/adminAuthSlice";
 const store = configureStore({
     reducer:{
         auth:authReducer,
         profile:profilReducer,
-        products:productsReducer,
-        cart:cartReducer,
+        store:productStoreReducer,
+        admin:adminReducer,
+        adminAuth:adminAuthReducer,
     }
 })
 

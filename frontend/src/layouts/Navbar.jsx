@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Navbar</a>
+        <a className="navbar-brand" href="#">Pittu's Store</a>
         <form className="d-flex" role="search">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Search</button>
@@ -38,9 +38,9 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        {/* <li class="nav-item">
           <NavLink class="nav-link active" aria-current="page" to="/cart">Cart</NavLink>
-        </li>
+        </li> */}
         </ul>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">

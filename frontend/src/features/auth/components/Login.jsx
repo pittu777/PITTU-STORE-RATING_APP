@@ -110,7 +110,17 @@ const Login = () => {
           >
             Forgot Password
           </Link>
+          
         </p>
+        <p className="tw:text-center">
+
+        <Link
+            to="/admin-login"
+            className="tw:text-blue-600 tw:hover:underline"
+            >
+            Admin Login
+          </Link>
+            </p>
       </div>
     </div>
   );

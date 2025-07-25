@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../utils/axiosInstance";
 
+const userFromStorage = localStorage.getItem("user");
+
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
+  user: userFromStorage ? JSON.parse(userFromStorage):null,
   token: localStorage.getItem("token") || null,
   expiresAt: localStorage.getItem("expiresAt") || null,
   status: "idle",
@@ -166,3 +168,27 @@ const authSlice = createSlice({
 
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
