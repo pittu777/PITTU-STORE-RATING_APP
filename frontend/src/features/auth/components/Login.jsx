@@ -105,7 +105,7 @@ const Login = () => {
         </p>
         <p className="tw:text-center tw:mt-4">
           <Link
-            to="/forgotpassword"
+            to="/forgot-password"
             className="tw:text-blue-600 tw:hover:underline"
           >
             Forgot Password

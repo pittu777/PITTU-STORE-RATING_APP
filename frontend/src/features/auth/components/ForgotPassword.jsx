@@ -12,6 +12,8 @@ const ForgotPassword = () => {
   const { status, error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
+  
+
   useEffect(() => {
     if (error) {
       toast.error(error, {
