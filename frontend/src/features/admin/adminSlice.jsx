@@ -28,7 +28,7 @@ export const deleteStore = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await deleteStoreApi(id);
-      return id; // return id to remove from state
+      return id;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || "Failed to delete store");
     }
@@ -45,13 +45,13 @@ const adminSlice = createSlice({
   initialState: {
     users: [],
     stores: [],
-    owners:[],
+    owners: [],
     loading: false,
     error: null,
-    success:null,
+    success: null,
   },
   reducers: {
-     clearMessages: (state) => {
+    clearMessages: (state) => {
       state.error = null;
       state.success = null;
     },
@@ -85,7 +85,7 @@ const adminSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        .addCase(addStore.pending, (state) => {
+      .addCase(addStore.pending, (state) => {
         state.loading = true;
         state.error = null;
         state.success = null;
@@ -100,29 +100,29 @@ const adminSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(fetchOwners.pending, (state) => {
-  state.loading = true;
-})
-.addCase(fetchOwners.fulfilled, (state, action) => {
-  state.loading = false;
-  state.owners = action.payload;
-})
-.addCase(fetchOwners.rejected, (state, action) => {
-  state.loading = false;
-  state.error = action.error.message;
-})
-.addCase(updateUserRole.fulfilled, (state, action) => {
-  const index = state.users.findIndex((u) => u.id === action.payload.id);
-  if (index !== -1) state.users[index] = action.payload;
-})
-.addCase(deleteUser.fulfilled, (state, action) => {
-   const index = state.users.findIndex((u) => u.id === action.payload.id);
-  if (index !== -1) {
-    state.users[index] = action.payload; 
-  }
-})
-.addCase(deleteStore.fulfilled, (state, action) => {
-  state.stores = state.stores.filter((s) => s.id !== action.payload);
-})
+        state.loading = true;
+      })
+      .addCase(fetchOwners.fulfilled, (state, action) => {
+        state.loading = false;
+        state.owners = action.payload;
+      })
+      .addCase(fetchOwners.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateUserRole.fulfilled, (state, action) => {
+        const index = state.users.findIndex((u) => u.id === action.payload.id);
+        if (index !== -1) state.users[index] = action.payload;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        const index = state.users.findIndex((u) => u.id === action.payload.id);
+        if (index !== -1) {
+          state.users[index] = action.payload;
+        }
+      })
+      .addCase(deleteStore.fulfilled, (state, action) => {
+        state.stores = state.stores.filter((s) => s.id !== action.payload);
+      })
 
 
   },

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
-import { logout } from "../../auth/authSlice";
+
  import { useNavigate } from 'react-router-dom';
+import { adminLogout } from "../../adminAuth/adminAuthSlice";
 
 
 
@@ -8,7 +9,7 @@ const AdminHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
     const handleLogout=()=>{
-      dispatch(logout());
+      dispatch(adminLogout());
       navigate('/admin-login');
       
     }

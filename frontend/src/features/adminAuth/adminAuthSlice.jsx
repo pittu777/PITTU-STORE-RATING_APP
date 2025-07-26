@@ -5,14 +5,19 @@ import { adminLoginApi } from "./adminAuthApi";
 
 export const adminLogin = createAsyncThunk(
   "adminAuth/login",
-  async (credentials, { rejectWithValue }) => {
+  async ({email,password}, { rejectWithValue }) => {
     try {
-      const data = await adminLoginApi(credentials);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("expiresAt", data.expiresAt);
+      const res = await adminLoginApi({ email, password });
+      console.log(res);
+       const { user, token, expiresAt } = res;
+      localStorage.setItem("admin", JSON.stringify(user));
+      localStorage.setItem("adminToken", token);
+      localStorage.setItem("expiresAt", expiresAt);
+      return { admin: user,
+        token,
+        expiresAt,};
 
-      return data;
+      
     } catch (err) {
       return rejectWithValue(err.response?.data?.error || "Admin login failed");
     }
@@ -22,8 +27,8 @@ export const adminLogin = createAsyncThunk(
 
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  token: localStorage.getItem("token") || null,
+  admin: JSON.parse(localStorage.getItem("admin")) || null,
+  token: localStorage.getItem("adminToken") || null,
   expiresAt: localStorage.getItem("expiresAt") || null,
   status: "idle",
   error: null,
@@ -32,7 +37,16 @@ const initialState = {
 const adminAuthSlice = createSlice({
   name: "adminAuth",
   initialState,
-  reducers: {},
+  reducers: {
+    adminLogout:(state)=>{
+      state.admin = null;
+      state.token=null;
+        state.expiresAt = null;
+      localStorage.removeItem("admin");
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("expiresAt");
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(adminLogin.pending, (state) => {
@@ -41,7 +55,8 @@ const adminAuthSlice = createSlice({
       })
       .addCase(adminLogin.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.user = action.payload.user;
+        // state.user = action.payload.user;
+        state.admin = action.payload.admin;
         state.token = action.payload.token;
         state.expiresAt = action.payload.expiresAt;
       })
@@ -52,5 +67,5 @@ const adminAuthSlice = createSlice({
   },
 });
 
-
+export const {adminLogout} = adminAuthSlice.actions;
 export default adminAuthSlice.reducer;

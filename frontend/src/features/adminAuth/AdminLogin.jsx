@@ -9,7 +9,8 @@ const AdminLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { status, error, user } = useSelector((state) => state.adminAuth);
+  const { status, error, admin } = useSelector((state) => state.adminAuth);
+  console.log(admin);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,10 +22,10 @@ const AdminLogin = () => {
   };
 
   useEffect(() => {
-    if (user?.role === "ADMIN") {
+    if (admin) {
       navigate("/admin");
     }
-  }, [user, navigate]);
+  }, [admin, navigate]);
 
   return (
     <div className="tw:min-h-screen tw:flex tw:items-center tw:justify-center tw:bg-gray-100">

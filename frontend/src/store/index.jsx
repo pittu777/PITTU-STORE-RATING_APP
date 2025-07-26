@@ -4,6 +4,7 @@ import profilReducer from "./../features/profile/profileSlice";
 import productStoreReducer from "./../features/productStore/productStoreSlice";
 import adminReducer from "./../features/admin/adminSlice";
 import adminAuthReducer from "./../features/adminAuth/adminAuthSlice";
+import ownerReducer from "./../features/owner/ownerSlice";
 const store = configureStore({
     reducer:{
         auth:authReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
         store:productStoreReducer,
         admin:adminReducer,
         adminAuth:adminAuthReducer,
+        owner:ownerReducer,
     }
 })
 

@@ -1,3 +1,4 @@
+import { adminLogout } from "../features/adminAuth/adminAuthSlice";
 import { logout } from "../features/auth/authSlice";
 import axios from "axios";
 
@@ -11,7 +12,10 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
-    if (token) {
+    const adminToken = localStorage.getItem("adminToken");
+    if (adminToken) {
+      config.headers.Authorization = `Bearer ${adminToken}`;
+    }else if(token){
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -26,6 +30,7 @@ axiosInstance.interceptors.response.use(
     if (error.response?.status === 401) {
       import("../store").then(({ default: store }) => {
         store.dispatch(logout());
+        store.dispatch(adminLogout());
       });
     }
     return Promise.reject(error);

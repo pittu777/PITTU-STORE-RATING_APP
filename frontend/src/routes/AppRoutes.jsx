@@ -61,6 +61,8 @@ import ResetPasswordPage from "../pages/ResetPasswordPage";
 import AdminDashboard from "../features/admin/components/AdminDashboard";
 import RequireAdmin from "../features/admin/protected/RequireAdmin";
 import AdminLogin from "../features/adminAuth/AdminLogin";
+import RequireOwner from "../features/owner/RequireOwner";
+import OwnerDashboard from "../features/owner/components/OwnerDashBoard";
 
 const AppRoutes = () => {
   const user = useSelector((state) => state.auth.user);
@@ -89,6 +91,14 @@ const AppRoutes = () => {
           <RequireAdmin>
             <AdminDashboard />
           </RequireAdmin>
+        }
+      />
+      <Route
+        path="/owner"
+        element={
+          <RequireOwner>
+            <OwnerDashboard />
+          </RequireOwner>
         }
       />
     </Routes>

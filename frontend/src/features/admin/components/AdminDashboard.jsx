@@ -9,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [tab, setTab] = useState("home");
-  const { user } = useSelector((state) => state.auth);
+  const { admin } = useSelector((state) => state.adminAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
   
 
-  if (!user || user.role !== "ADMIN") {
+  if (!admin || admin.role !== "ADMIN") {
     return <div className="tw:text-center tw:text-red-600 tw:mt-10">Access Denied</div>;
   }
 

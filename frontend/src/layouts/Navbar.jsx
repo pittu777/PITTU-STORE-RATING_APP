@@ -38,17 +38,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {/* <li class="nav-item">
-          <NavLink class="nav-link active" aria-current="page" to="/cart">Cart</NavLink>
-        </li> */}
-        </ul>
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              {!user ? (
-                <span className="nav-link tw:cursor-pointer" onClick={handleLogin}>Login</span>
-              ) : null}
-            </li>
-            <li className="nav-item dropdown">
+          <li className="nav-item dropdown">
       
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Profile
@@ -80,6 +70,45 @@ const Navbar = () => {
                 )}
               </ul>
             </li>
+        </ul>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              {!user ? (
+                <span className="nav-link tw:cursor-pointer" onClick={handleLogin}>Login</span>
+              ) : null}
+            </li>
+            {/* <li className="nav-item dropdown">
+      
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </a>
+              <ul className="dropdown-menu">
+                {user ? (
+                  <>
+                    <li className='tw:my-2'>
+                      <span>
+                        <button onClick={handleProfile} className='btn btn-primary d-flex align-items-center justify-content-center gap-2'>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                          </svg>Profile
+                        </button>
+
+
+                      </span>
+                    </li>
+                    <li>
+                      <button className="btn btn-danger" onClick={handleLogout}>
+                        Logout
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <span className="dropdown-item">User not logged in</span>
+                  </li>
+                )}
+              </ul>
+            </li> */}
           </ul>
       
         </div>

@@ -6,5 +6,6 @@ const authenticateUser = require('../middleware/auth.middleware');
 
 
 router.get('/', authenticateUser, storeController.getAllStores);
-router.get("/my-store", authenticateUser, storeController.getMyStore);
 module.exports = router;
+
+

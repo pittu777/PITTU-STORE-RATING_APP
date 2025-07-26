@@ -1,5 +1,58 @@
 
 
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+
+// model User {
+//   id        Int      @id @default(autoincrement())
+//   name      String   @db.VarChar(60)
+//   email     String   @unique
+//   password  String
+//   address   String?  @db.VarChar(400)
+//   role      Role     @default(USER)
+//   createdAt DateTime @default(now())
+
+//   stores    Store[]    @relation("UserStores")
+//   ratings   Rating[]
+// }
+
+// model Store {
+//   id        Int      @id @default(autoincrement())
+//   name      String
+//   email     String
+//   address   String
+//   ownerId   Int
+//   owner     User     @relation("UserStores", fields: [ownerId], references: [id])
+//   ratings   Rating[]
+//   createdAt DateTime @default(now())
+// }
+
+// model Rating {
+//   id        Int      @id @default(autoincrement())
+//   rating    Int
+//   userId    Int
+//   storeId   Int
+//   user      User     @relation(fields: [userId], references: [id])
+//   store     Store    @relation(fields: [storeId], references: [id])
+//   updatedAt DateTime @updatedAt
+// }
+
+// enum Role {
+//   ADMIN
+//   USER
+//   OWNER
+// }
+
+
+
+
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,7 +71,7 @@ model User {
   role      Role     @default(USER)
   createdAt DateTime @default(now())
 
-  stores    Store[]    @relation("UserStores")
+  stores    Store[]  
   ratings   Rating[]
 }
 
@@ -28,8 +81,8 @@ model Store {
   email     String
   address   String
   ownerId   Int
-  owner     User     @relation("UserStores", fields: [ownerId], references: [id])
-  ratings   Rating[]
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)  // ✅ Correct usage
+  ratings   Rating[] 
   createdAt DateTime @default(now())
 }
 
@@ -38,8 +91,8 @@ model Rating {
   rating    Int
   userId    Int
   storeId   Int
-  user      User     @relation(fields: [userId], references: [id])
-  store     Store    @relation(fields: [storeId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)  // ✅ Correct
+  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade) // ✅ Correct
   updatedAt DateTime @updatedAt
 }
 
