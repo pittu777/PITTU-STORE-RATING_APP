@@ -13,7 +13,7 @@ import AdminDashboard from "../features/admin/components/AdminDashboard";
 import RequireAdmin from "../features/admin/protected/RequireAdmin";
 import AdminLogin from "../features/adminAuth/AdminLogin";
 import RequireOwner from "../features/owner/RequireOwner";
-import OwnerDashboard from "../features/owner/components/OwnerDashBoard";
+import OwnerDashboard from "../features/owner/components/OwnerDashboard";
 
 
 

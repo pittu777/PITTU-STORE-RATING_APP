@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Navbar from '../layouts/Navbar';
 import StoreList from '../features/productStore/components/StoreList';
-import OwnerDashboard from '../features/owner/components/OwnerDashBoard';
+import OwnerDashboard from '../features/owner/components/OwnerDashboard';
 
 
 
