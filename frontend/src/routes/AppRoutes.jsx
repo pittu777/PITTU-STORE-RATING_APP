@@ -1,52 +1,3 @@
-// import { Routes, Route, Navigate } from "react-router-dom";
-// import Signup from "../features/auth/components/Signup";
-// import LoginPage from "../pages/LoginPage";
-// import Home from "../pages/Home";
-// import ProfilePage from "../pages/ProfilePage";
-// import { useSelector } from "react-redux";
-// import ForgotPasswordPage from "../pages/ForgotPasswordPage";
-// import ResetPasswordPage from "../pages/ResetPasswordPage";
-// import AdminDashboard from "../features/admin/components/AdminDashboard";
-// import RequireAdmin from "../features/admin/protected/RequireAdmin";
-// import AdminLogin from "../features/adminAuth/AdminLogin";
-
-
-// const AppRoutes = () => {
-//   const user = useSelector((state) => state.auth.user);
-
-//   return (
-  
-//     <Routes>
-//       <Route
-//         path="/"
-//         element={
-
-//           <Navigate to="/signup" />
-
-//         }
-//       />
-//       <Route path="/signup" element={<Signup />} />
-//       <Route path="/login" element={<LoginPage />} />
-//         <Route path="/admin-login" element={<AdminLogin />} />
-//       <Route path="/home" element={!user ? <LoginPage /> : <Home />} />
-//       <Route path="/profile" element={!user ? <LoginPage /> : <ProfilePage />} />
-//       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-//       <Route path="/resetpassword/:token" element={<ResetPasswordPage />} />
-      
-//   <Route
-//     path="/admin"
-//     element={
-//       <RequireAdmin>
-//         <AdminDashboard />
-//       </RequireAdmin>
-//     }
-//   />
-//     </Routes>
-//   );
-// };
-
-// export default AppRoutes;
-
 
 
 
@@ -63,6 +14,9 @@ import RequireAdmin from "../features/admin/protected/RequireAdmin";
 import AdminLogin from "../features/adminAuth/AdminLogin";
 import RequireOwner from "../features/owner/RequireOwner";
 import OwnerDashboard from "../features/owner/components/OwnerDashBoard";
+
+
+
 
 
 const AppRoutes = () => {
