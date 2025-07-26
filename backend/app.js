@@ -20,7 +20,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "https://pittu-store-rating-app.vercel.app",
-  "https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app/home"
+  "https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app"
 ];
 
 app.use(cors({
