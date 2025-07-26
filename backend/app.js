@@ -13,10 +13,29 @@ const app = express();
 
 app.use(express.json());
 // app.use(cors({origin:"http://localhost:5173", credentials:true}));
-app.use(cors({origin:"https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app", credentials:true, 
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+// app.use(cors({origin:"https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app", credentials:true, 
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
+
+const allowedOrigins = [
+  "https://pittu-store-rating-app.vercel.app",
+  "https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app/home"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
