@@ -2,7 +2,8 @@ import { adminLogout } from "../features/adminAuth/adminAuthSlice";
 import { logout } from "../features/auth/authSlice";
 import axios from "axios";
 
-export const BASE_URL = `http://localhost:5000/api`;
+// export const BASE_URL = `http://localhost:5000/api`;
+export const BASE_URL = `https://pittu-store-rating-app.onrender.com/api`;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
