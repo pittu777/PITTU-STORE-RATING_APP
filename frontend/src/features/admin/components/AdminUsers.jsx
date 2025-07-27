@@ -205,7 +205,7 @@ const AdminUsers = () => {
                       onChange={(e) => handleUpdate(u.id, e.target.value)}
                       disabled={actionLoading}
                     >
-                      {["ADMIN", "OWNER", "USER"].map((r) => (
+                      {["OWNER", "USER"].map((r) => (
                         <option key={r} value={r}>
                           {r}
                         </option>
