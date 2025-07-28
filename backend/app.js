@@ -13,10 +13,7 @@ const app = express();
 
 app.use(express.json());
 // app.use(cors({origin:"http://localhost:5173", credentials:true}));
-// app.use(cors({origin:"https://pittu-store-rating-app-git-master-pittu777s-projects.vercel.app", credentials:true, 
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+
 
 const allowedOrigins = [
   "https://pittu-store-rating-app.vercel.app",

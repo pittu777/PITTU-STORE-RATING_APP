@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStores, submitRating } from "../productStoreSlice";
 import { toast } from "react-toastify";
 import { FaStar } from "react-icons/fa";
+import DEFAULT_STORE_IMAGE from "./../../../../src/assets/logo.png"
 
 const StoreList = () => {
   const dispatch = useDispatch();
   const { stores, loading, error } = useSelector((state) => state.store);
   const { user } = useSelector((state) => state.auth);
+
+  console.log(stores);
 
   const [activeStoreId, setActiveStoreId] = useState(null);
   const [hoverRating, setHoverRating] = useState(0);
@@ -65,51 +68,72 @@ const StoreList = () => {
     <div className="tw:container tw:mx-auto tw:px-4 tw:py-6">
       <h1 className="tw:text-2xl tw:font-bold tw:text-center tw:mb-6">Stores Listing</h1>
 
-      <div className="tw:grid tw:sm:grid-cols-2 tw:md:grid-cols-3 tw:gap-6">
-        {stores.map((store) => (
-          <div
-            key={store.id}
-            className="tw:bg-white tw:shadow-md tw:rounded-lg tw:p-5 tw:border tw:border-gray-200"
-          >
-            <h2 className="tw:text-lg tw:font-semibold tw:text-gray-800">{store.name}</h2>
-            <p className="tw:text-sm tw:text-gray-600 tw:mt-1">{store.address}</p>
 
-            <div className="tw:mt-3">
-              <p>
-                <span className="tw:font-medium">Overall Rating:</span>{" "}
-                {store.overallRating ? `⭐ ${store.overallRating}` : "No ratings yet"}
-              </p>
-
-              {activeStoreId === store.id ? (
-                updatingStoreId === store.id ? (
-                  <p className="tw:text-sm tw:mt-2 tw:text-blue-500">Updating rating...</p>
-                ) : (
-                  renderStars(store.id, store.userRating)
-                )
-              ) : store.userRating !== null ? (
-                <>
-                  <p>
-                    <span className="tw:font-medium">Your Rating:</span> ⭐ {store.userRating}
-                  </p>
-                  <button
-                    className="tw:mt-2 tw:bg-blue-600 tw:text-white tw:px-3 tw:py-1 tw:rounded tw:hover:bg-blue-700 tw:text-sm"
-                    onClick={() => setActiveStoreId(store.id)}
-                  >
-                    Edit Rating
-                  </button>
-                </>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+  {stores.map((store) => (
+    
+    <div key={store.id} className="col">
+      <div className="card h-100 shadow-sm border-0">
+        {/* Optional card image - uncomment if you have store images */}
+        <img 
+          src={store.image? store.image: DEFAULT_STORE_IMAGE} 
+          className="card-img-top" 
+          alt={store.name}
+          
+        />
+        
+        <div className="card-body">
+          <h5 className="card-title fw-semibold mb-2">{store.name}</h5>
+          <p className="card-text text-muted small mb-3">{store.address}</p>
+          
+          <div className="border-top pt-3">
+            <p className="mb-2">
+              <span className="fw-medium">Overall Rating:</span>{" "}
+              {store.overallRating ? (
+                <span className="d-inline-flex align-items-center">
+                  ⭐ {store.overallRating}
+                </span>
               ) : (
+                "No ratings yet"
+              )}
+            </p>
+
+            {activeStoreId === store.id ? (
+              updatingStoreId === store.id ? (
+                <p className="text-primary small mt-2">Updating rating...</p>
+              ) : (
+                renderStars(store.id, store.userRating)
+              )
+            ) : store.userRating !== null ? (
+              <>
+                <p className="mb-3">
+                  <span className="fw-medium">Your Rating:</span>{" "}
+                  <span className="d-inline-flex align-items-center">
+                    ⭐ {store.userRating}
+                  </span>
+                </p>
                 <button
-                  className="tw:mt-2 tw:bg-blue-600 tw:text-white tw:px-3 tw:py-1 tw:rounded tw:hover:bg-blue-700 tw:text-sm"
+                  className="btn btn-primary btn-sm w-100"
                   onClick={() => setActiveStoreId(store.id)}
                 >
-                  Rate This Store
+                  Edit Rating
                 </button>
-              )}
-            </div>
+              </>
+            ) : (
+              <button
+                className="btn btn-primary btn-sm w-100"
+                onClick={() => setActiveStoreId(store.id)}
+              >
+                Rate This Store
+              </button>
+            )}
           </div>
-        ))}
+        </div>
       </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 };

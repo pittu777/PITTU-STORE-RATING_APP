@@ -50,6 +50,7 @@ import { deleteStore, fetchStores } from "../adminSlice";
 import { toast } from "react-toastify";
 import { FiTrash2, FiEdit, FiStar, FiMapPin, FiUser } from "react-icons/fi";
 import { FiLoader } from "react-icons/fi";
+import DEFAULT_IMAGE from "./../../../assets/logo.png";
 
 const AdminStores = () => {
   const dispatch = useDispatch();
@@ -97,6 +98,10 @@ const AdminStores = () => {
         {stores.map((store) => (
           <div key={store.id} className="tw:bg-white tw:rounded-lg tw:shadow tw:overflow-hidden tw:border tw:border-gray-100 hover:tw:shadow-md tw:transition-shadow">
             <div className="tw:p-4">
+              <div className="card" style={{"width": "20rem"}}>
+  <img src={store.image || DEFAULT_IMAGE} className="card-img-top" alt="..."/>
+  
+</div>
               <h3 className="tw:text-lg tw:font-semibold tw:text-gray-800 tw:mb-2">{store.name}</h3>
               
               <div className="tw:space-y-2 tw:text-sm">

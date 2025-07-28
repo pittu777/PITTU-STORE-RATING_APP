@@ -10,6 +10,7 @@ const AddStoreForm = () => {
     email: "",
     address: "",
     ownerId: "",
+    image:"",
   });
 
   const dispatch = useDispatch();
@@ -25,7 +26,11 @@ const AddStoreForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addStore(form));
+    const storeData = {
+      ...form,
+      image : form.image.trim()===""?null:form.image.trim()
+    };
+    dispatch(addStore(storeData));
   };
 
   useEffect(() => {
@@ -75,6 +80,23 @@ const AddStoreForm = () => {
             className="tw:w-full tw:border tw:px-3 tw:py-2 tw:rounded"
             required
           ></textarea>
+        </div>
+
+
+        
+        <div className="tw:mb-4">
+          <label className="tw:block tw:mb-1">Store Image URL</label>
+          <input
+            type="url"
+            name="image"
+            value={form.image}
+            onChange={handleChange}
+            className="tw:w-full tw:border tw:px-3 tw:py-2 tw:rounded"
+            placeholder="https://example.com/store-image.jpg"
+          />
+          <p className="tw:text-xs tw:text-gray-500 tw-mt-1">
+            Leave blank to use default store image
+          </p>
         </div>
 
         <div className="tw:mb-4">

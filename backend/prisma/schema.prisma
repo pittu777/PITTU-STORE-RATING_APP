@@ -80,6 +80,7 @@ model Store {
   name      String
   email     String
   address   String
+  image     String?  @db.VarChar(500)
   ownerId   Int
   owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)  // ✅ Correct usage
   ratings   Rating[] 

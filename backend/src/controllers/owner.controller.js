@@ -92,6 +92,7 @@ const getMyStores = async (req, res) => {
         id: store.id,
         name: store.name,
         address: store.address,
+        image: store.image,
         averageRating,
         totalRatings,
         ratings: store.ratings.map((r) => ({

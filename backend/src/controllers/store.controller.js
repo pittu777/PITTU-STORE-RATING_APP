@@ -2,7 +2,7 @@
 const prisma = require('./../config/db');
 
 const getAllStores = async (req, res) => {
-  const userId = req.user.id; // from JWT middleware
+  const userId = req.user.id;
 
   try {
     const stores = await prisma.store.findMany({
@@ -22,6 +22,7 @@ const getAllStores = async (req, res) => {
           id: store.id,
           name: store.name,
           address: store.address,
+          image: store.image,
           overallRating: Number(overallRating.toFixed(1)),
           userRating,
         };

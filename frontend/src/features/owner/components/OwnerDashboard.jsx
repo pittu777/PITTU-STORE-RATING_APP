@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOwnerStores } from "../ownerSlice";
-
+import DEFAULT_IMAGE from "./../../../assets/logo.png";
 
 const OwnerDashboard = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,10 @@ const OwnerDashboard = () => {
       ) : (
         stores.map((store) => (
           <div key={store.id} className="tw:border tw:rounded tw:p-4 tw:mb-4 tw:bg-white">
+                          <div className="card" style={{"width": "20rem"}}>
+              <img src={store.image || DEFAULT_IMAGE} className="card-img-top" alt="..."/>
+              
+            </div>
             <h3 className="tw:text-xl tw:font-semibold">{store.name}</h3>
             <p className="tw:text-sm">📍 {store.address}</p>
             <p className="tw:mt-2">⭐ Avg Rating: {store.averageRating ?? "No ratings yet"}</p>

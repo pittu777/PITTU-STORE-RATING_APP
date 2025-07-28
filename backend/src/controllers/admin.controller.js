@@ -33,6 +33,7 @@ exports.getAllStores = async (req, res) => {
     id: store.id,
     name: store.name,
     address: store.address,
+    image: store.image,
     owner: store.owner,
     totalRatings: store.ratings.length,
     averageRating:
@@ -48,7 +49,7 @@ exports.getAllStores = async (req, res) => {
 };
 
 exports.createStore = async (req, res) => {
-  const { name, address, email, ownerId } = req.body;
+  const { name, address, email, ownerId, image } = req.body;
 
   if (!name || !address || !email || !ownerId)
     return res.status(400).json({ error: "All fields required" });
@@ -75,6 +76,7 @@ exports.createStore = async (req, res) => {
       name,
       address,
       email,
+      image,
       ownerId:numericOwnerId,
     },
   });
